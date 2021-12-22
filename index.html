@@ -2,24 +2,28 @@
 <html lang="en">
 <head>
   <title>Document</title>
-  <script src="ray-casting.js"></script>
+  <script src="ray-casting-2d-map.js"></script>
   <script type="text/javascript">
     var x;
     var y;
     var r = 0;
+    var pixelSize = 10;
+    var wfp;
+    var hfp;
 
     function main() {
       var canvas = document.getElementById('canvas');
-      x = canvas.width/2;
-      y = canvas.height/2;
+      x = canvas.width / 2;
+      y = canvas.height / 2;
+      wfp = canvas.width / pixelSize;
+      hfp = canvas.height / pixelSize;
 
       if (canvas.getContext) {
         window.ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        draw_2d_map();
+        draw_map();
         ray();
         draw_player();
-        test();
       }
     }
   </script>
@@ -28,7 +32,7 @@
   </style>
 </head>
 <body onload="main()">
-  <canvas id="canvas" height="300" width="300"></canvas>
+  <canvas id="canvas" height="240" width="240"></canvas>
   <br />
   <button onclick="up()">↑</button>
   <button onclick="down()">↓</button>
