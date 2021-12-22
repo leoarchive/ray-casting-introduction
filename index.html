@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <script src="ray-casting.js"></script>
+  <script type="text/javascript">
+    var x;
+    var y;
+    var r = 0;
+
+    function main() {
+      var canvas = document.getElementById('canvas');
+      x = canvas.width/2;
+      y = canvas.height/2;
+
+      if (canvas.getContext) {
+        window.ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        draw_2d_map();
+        ray();
+        draw_player();
+        test();
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; }
+  </style>
+</head>
+<body onload="main()">
+  <canvas id="canvas" height="300" width="300"></canvas>
+  <br />
+  <button onclick="up()">↑</button>
+  <button onclick="down()">↓</button>
+  <button onclick="left()">←</button>
+  <button onclick="right()">→</button>
+  <button onclick="rotate_right()">↻</button>
+  <button onclick="rotate_left()">↺</button>
+</body>
+</html>
