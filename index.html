@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Document</title>
-  <script src="ray-casting-2d-map.js"></script>
-  <script type="text/javascript">
-    var x;
-    var y;
-    var r = 0;
-    var pixelSize = 10;
-    var wfp;
-    var hfp;
+<html>
+  <head>
+    <title>Document</title>
+    <script src="ray-casting.js"></script>
+    <script type="text/javascript">
+      var x;
+      var y;
+      var rotateCircleRadius = 0;
+      var pixelSize = 10;
+      var map2dWidth = 240;
+      var map2dHeight = 240;
+      var widthForPixel = map2dWidth / pixelSize;
+      var heightForPixel = map2dHeight / pixelSize;
+      var rayDistances = [];
 
-    function main() {
-      var canvas = document.getElementById('canvas');
-      x = canvas.width / 2;
-      y = canvas.height / 2;
-      wfp = canvas.width / pixelSize;
-      hfp = canvas.height / pixelSize;
+      function main() {
+        var canvas = document.getElementById("canvas");
+        x = 50;
+        y = 50;
 
-      if (canvas.getContext) {
-        window.ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        draw_map();
-        ray();
-        draw_player();
+        if (canvas.getContext) {
+          window.ctx = canvas.getContext("2d");
+
+          draw_map();
+          draw_ray();
+          draw_player();
+        }
       }
-    }
-  </script>
-  <style>
-    * { margin: 0; }
-  </style>
-</head>
-<body onload="main()">
-  <canvas id="canvas" height="240" width="240"></canvas>
-  <br />
-  <button onclick="up()">↑</button>
-  <button onclick="down()">↓</button>
-  <button onclick="left()">←</button>
-  <button onclick="right()">→</button>
-  <button onclick="rotate_right()">↻</button>
-  <button onclick="rotate_left()">↺</button>
-</body>
+    </script>
+    <style>
+      * {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body onload="main()">
+    <canvas id="canvas" height="240" width="480"></canvas>
+    <br />
+    <button onclick="up()">↑</button>
+    <button onclick="down()">↓</button>
+    <button onclick="left()">←</button>
+    <button onclick="right()">→</button>
+    <button onclick="rotate_right()">↻</button>
+    <button onclick="rotate_left()">↺</button>
+  </body>
 </html>
